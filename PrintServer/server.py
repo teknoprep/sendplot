@@ -6,14 +6,14 @@ import os
 import subprocess
 import signal
 import sys
-import ConfigParser
+import configparser
 import logging
 from os import listdir, remove
 from time import sleep, localtime, strftime
 
 def initialize():
   # Read configuration file
-  config                           = ConfigParser.RawConfigParser()
+  config                           = configparser.RawConfigParser()
   config.read('server_config.ini')
 
   server_config                    = config._sections['Server']
@@ -30,7 +30,7 @@ def initialize():
   logging.info('>>>>> Begin Initializing <<<<<')
 
   def signal_handler(signal, frame):
-      print 'Shutting down SendPlot Server!'
+      print ('Shutting down SendPlot Server!')
       logging.info('\tshutting down...')
       logging.info('========================= SendPlot Server shutdown ========================')
       sys.exit(0)
@@ -38,9 +38,9 @@ def initialize():
   logging.info('\t\t\t ===[ Press Ctrl+C to shutdown SendPlot Server ]===')
 
   # Display console startup message
-  print '========================= SendPlot Server startup ========================='
-  print '\t\t\t ===[ Press Ctrl+C to shutdown SendPlot Server ]==='
-  print 'Monitoring...'
+  print ('========================= SendPlot Server startup =========================')
+  print ('\t\t\t ===[ Press Ctrl+C to shutdown SendPlot Server ]===')
+  print ('Monitoring...')
 
   # Scan for queues
   queue_count = 0

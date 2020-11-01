@@ -41,7 +41,7 @@ class Logger(logging.Logger):
        self.addHandler(fileHandler)
 
 def signal_handler(signal, frame):
-    print 'Shutting down Masterbill Processor!'
+    print ('Shutting down Masterbill Processor!')
     logger.info('\tshutting down...')
     logger.info('========================= Masterbill Processor shutdown ========================')
     writeLogToHtml()

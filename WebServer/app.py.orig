@@ -92,7 +92,7 @@ def search_for_drawing(q, dCombined):
   iLimit = 0
   dReturned = {}
   q = q.upper()
-  for key, value in dCombined.iteritems():
+  for key, value in dCombined.items():
     if iLimit > SEARCH_LIMIT:
       return dReturned
     key = key.upper()
@@ -112,7 +112,7 @@ def read_mb_notes_json():
 
 def search_for_mb_notes(q, dMbNotes):
   dReturned = {}
-  for key, value in dMbNotes.iteritems():
+  for key, value in dMbNotes.items():
     if key == q:
       dReturned[key] = value
   return dReturned
@@ -351,7 +351,7 @@ def get_mb_drawings(q):
     dMbDrawings = json.load(json_file)
 
   dReturned = {}
-  for key, value in dMbDrawings.iteritems():
+  for key, value in dMbDrawings.items():
     if key == q:
       # logger.info( 'key, value')
       # logger.info(  key )
@@ -369,7 +369,7 @@ def get_media(q):
     dMedia = json.load(json_file)
 
   dReturned = {}
-  for key, value in dMedia.iteritems():
+  for key, value in dMedia.items():
     if key == q:
       # logger.info( 'key, value')
       # logger.info(  key )
