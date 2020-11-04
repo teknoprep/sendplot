@@ -11,3 +11,9 @@ Usage
 7. pip install -r requirements.txt
 8. python WebServer/app.py
 9. Find localhost:5000 in your web browser.
+
+
+Setting for Environment ( Edit .env file )
+--------------------------
+1. File scan locations
+<im
