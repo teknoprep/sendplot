@@ -16,4 +16,4 @@ Usage
 Setting for Environment ( Edit .env file )
 --------------------------
 1. File scan locations
-<im
+<img src="png/git_1.png width="300px" height="300px">
