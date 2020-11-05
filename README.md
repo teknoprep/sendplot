@@ -16,4 +16,6 @@ Usage
 Setting for Environment ( Edit .env file )
 --------------------------
 1. File scan locations
-<im
+  <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_1.png" width="800" height="400"></code><p>
+2. Printers
+  <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_2.png" width="800" height="400"></code>
