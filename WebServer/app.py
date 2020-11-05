@@ -19,7 +19,9 @@ path_url = {}
 url_path = {}
 
 app = Flask(__name__)
+app.run(host= '0.0.0.0')
 app.secret_key = 'l1wovKLN7xsMT5bieGN3vVnyhzQwNJmdmzzr5NMjC7AbaxJyRx34n5qXHuDBHBXUix2BLlBeoDZNh3XcNqUZLHC6oZzVioCq'
+
 
 #                Set app.debug = True to enable Debug Toolbar
 app.debug = False
