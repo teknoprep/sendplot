@@ -86,7 +86,7 @@ def read_directories():
             word = word.strip()
             line_tmp.append(word[1:-1])
         dDirectories.append(line_tmp)
-    print(dDirectories)
+    # print(dDirectories)
     return dDirectories
 
 
