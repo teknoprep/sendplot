@@ -1,24 +1,7 @@
-# sendplot
-
-Usage
-----------------
-1. Run Command Prompt(or Power Shell)
-2. cd {project folder}
-3. git clone https://github.com/teknoprep/sendplot.git
-4. cd sendplot
-5. python -m venv env
-6. env/Scripts/activate (Windows)
-7. pip install -r requirements.txt
-8. python WebServer/app.py
-9. Find localhost:5000 in your web browser.
-
 # SendPlot Print Server
-
-
-
 ## Requirements
 
-### Python 2.7.x
+### Python >= 3.8.0
 
 #### Install
 
@@ -83,6 +66,30 @@ Usage
 * Copy the new IrfanView INI file to the new queue folder.  Do not make any other changes in IrfanView until after the INI file is copied.
 
 ----
+
+# sendplot
+
+Usage
+----------------
+1. Run Command Prompt(or Power Shell)
+2. cd {project folder}
+3. git clone https://github.com/teknoprep/sendplot.git
+4. cd sendplot
+5. python -m venv env
+6. env/Scripts/activate (Windows)
+7. pip install -r requirements.txt
+8. python WebServer/app.py
+9. Find localhost:5000 in your web browser.
+
+
+
+
+
+
+
+----
+
+
 
 Setting for Environment ( Edit .env file )
 --------------------------
