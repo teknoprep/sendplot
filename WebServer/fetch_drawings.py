@@ -41,6 +41,7 @@ def get_dir_combined(dDrawingList):
 
 
 def scan_all_directories():
+    dCombined = {}
     print("Scanning directories ...")
     for drawing_directory in aDirs:
         dDirectory = get_dir_dict(drawing_directory[0], drawing_directory[
