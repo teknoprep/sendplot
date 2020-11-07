@@ -20,11 +20,11 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
-in_queue    = os.environ.get('IN_QUEUE')
-out_queue   = os.environ.get('OUT_QUEUE')
-archive     = os.environ.get('ARCHIVE')
-log_dir     = os.environ.get('MASTERBILLS_LOG_DIR')
-scan_delay  = os.environ.get('MASTERBILLS_SCAN_DELAY')
+in_queue    = os.environ.get('IN_QUEUE') + "\\"
+out_queue   = os.environ.get('OUT_QUEUE') + "\\"
+archive     = os.environ.get('ARCHIVE') + "\\"
+log_dir     = os.environ.get('MASTERBILLS_LOG_DIR') + "\\"
+scan_delay  = float(os.environ.get('MASTERBILLS_SCAN_DELAY'))
 
 
 class Logger(logging.Logger):
