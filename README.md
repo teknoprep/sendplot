@@ -82,8 +82,16 @@
 
 
 ## Setting for Environment ( Edit .env file )
---------------------------
 * File scan locations
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_1.png" width="800" height="400"></code><p>
 * Printers
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_2.png" width="800" height="400"></code>
+
+
+--
+## Run
+
+### WebServer
+
+* run run_web_server.bat
+-
