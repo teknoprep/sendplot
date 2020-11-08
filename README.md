@@ -10,7 +10,9 @@
 ----
 
 ### SendPlot
-----------------
+
+#### install
+
 * Run Command Prompt(or Power Shell)
 * cd {project folder}
 * git clone https://github.com/teknoprep/sendplot.git
@@ -82,16 +84,31 @@
 
 
 ## Setting for Environment ( Edit .env file )
+
 * File scan locations
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_1.png" width="800" height="400"></code><p>
 * Printers
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_2.png" width="800" height="400"></code>
 
 
---
+----
 ## Run
 
-### WebServer
+### Web Server
 
 * run run_web_server.bat
--
+
+----
+
+### pyMasterbills
+
+* run run_pymasterbills.bat
+
+----
+
+### Print Server
+
+* run run_print_server.bat
+
+
+
