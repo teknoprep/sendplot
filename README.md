@@ -1,7 +1,9 @@
 # SendPlot Server
 ## Requirements
 
-### Python >= 3.8.0
+### Python
+
+* Version >= 3.8.0
 
 #### Install
 
@@ -20,6 +22,7 @@
 * python -m venv env
 * env/Scripts/activate (Windows)
 * pip install -r requirements.txt
+* Environment settings in .env files
 
 ----
 
@@ -79,17 +82,6 @@
 * Locate the INI file with the new settings at %APPDATA%\\IrfanView\\i_view32.ini.  (Open Windows Explorer and in the address bar type **%APPDATA%\\IrfanView\\**)
 * Create a new queue folder below the QUEUE-ROOT
 * Copy the new IrfanView INI file to the new queue folder.  Do not make any other changes in IrfanView until after the INI file is copied.
-
-----
-
-
-## Setting for Environment ( Edit .env file )
-
-* File scan locations
-  <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_1.png" width="800" height="400"></code><p>
-* Printers
-  <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_2.png" width="800" height="400"></code>
-
 
 ----
 ## Run
