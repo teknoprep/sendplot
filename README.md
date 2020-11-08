@@ -1,4 +1,4 @@
-# SendPlot Print Server
+# SendPlot Server
 ## Requirements
 
 ### Python >= 3.8.0
@@ -6,6 +6,18 @@
 #### Install
 
 * After installation add Python & Python\\scripts folders to SYSTEM PATH
+
+----
+
+### SendPlot
+----------------
+* Run Command Prompt(or Power Shell)
+* cd {project folder}
+* git clone https://github.com/teknoprep/sendplot.git
+* cd sendplot
+* python -m venv env
+* env/Scripts/activate (Windows)
+* pip install -r requirements.txt
 
 ----
 
@@ -49,11 +61,12 @@
 
 ----
 
+
 ## Queue Setup
 
-  * The queue folders follow a similar layout to PlotManager queues.
-  * QUEUE-ROOT: The root folder of the PDF queues.  When SendPlot Print Server starts it makes a list of queues from the subfolders and monitors those folders for PDF files.  When a PDF file is copied into a QUEUE SendPlot Print Server prints it to the configured printer and removes the PDF file from the QUEUE.  If queue folders are added or removed restart SendPlot Server.
-  * QUEUE: Each available printer and page size has a separate queue.  An IrfanView INI file resides in each queue.  The INI file contains configuration options for the Printer name, page size, orientation handling and output fit to page.
+* The queue folders follow a similar layout to PlotManager queues.
+* QUEUE-ROOT: The root folder of the PDF queues.  When SendPlot Print Server starts it makes a list of queues from the subfolders and monitors those folders for PDF files.  When a PDF file is copied into a QUEUE SendPlot Print Server prints it to the configured printer and removes the PDF file from the QUEUE.  If queue folders are added or removed restart SendPlot Server.
+* QUEUE: Each available printer and page size has a separate queue.  An IrfanView INI file resides in each queue.  The INI file contains configuration options for the Printer name, page size, orientation handling and output fit to page.
 * Open a PDF drawing in IrfanView
 * File menu > Print
 * Check **Auto Rotate**
@@ -67,35 +80,10 @@
 
 ----
 
-# sendplot
 
-Usage
-----------------
-1. Run Command Prompt(or Power Shell)
-2. cd {project folder}
-3. git clone https://github.com/teknoprep/sendplot.git
-4. cd sendplot
-5. python -m venv env
-6. env/Scripts/activate (Windows)
-7. pip install -r requirements.txt
-8. python WebServer/app.py
-9. Find localhost:5000 in your web browser.
-
-
-
-
-
-
-
-----
-
-
-
-Setting for Environment ( Edit .env file )
+## Setting for Environment ( Edit .env file )
 --------------------------
-1. File scan locations
+* File scan locations
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_1.png" width="800" height="400"></code><p>
-2. Printers
+* Printers
   <p><code><img src="https://github.com/teknoprep/sendplot/blob/main/png/git_2.png" width="800" height="400"></code>
-
-
