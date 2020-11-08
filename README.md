@@ -81,7 +81,8 @@
 * Test the print settings and change settings if needed
 * Locate the INI file with the new settings at %APPDATA%\\IrfanView\\i_view32.ini.  (Open Windows Explorer and in the address bar type **%APPDATA%\\IrfanView\\**)
 * Create a new queue folder below the QUEUE-ROOT
-* Copy the new IrfanView INI file to the new queue folder and add printer to printer.json.  Example: "CSize": "Plotter C size",
+* Copy the new IrfanView INI file to the new queue folder and add printer to printer.json.  
+    Example: "CSize": "Plotter C size",
 * Do not make any other changes in IrfanView until after the INI file is copied.
 
 ----
