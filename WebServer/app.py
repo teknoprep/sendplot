@@ -116,10 +116,6 @@ def search_for_drawing(q, dCombined):
             dReturned[key] = get_web_links(value)
             iLimit += 1
         elif key.startswith(q):
-            print("key " + " *" * 50)
-            print(key)
-            print("value " + " *" * 50)
-            print(value)
             dReturned[key] = get_web_links(value)
             iLimit += 1
     return dReturned

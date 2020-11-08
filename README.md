@@ -67,7 +67,7 @@
 ----
 
 
-## Queue Setup
+## Queue Setup & Add Printer
 
 * The queue folders follow a similar layout to PlotManager queues.
 * QUEUE-ROOT: The root folder of the PDF queues.  When SendPlot Print Server starts it makes a list of queues from the subfolders and monitors those folders for PDF files.  When a PDF file is copied into a QUEUE SendPlot Print Server prints it to the configured printer and removes the PDF file from the QUEUE.  If queue folders are added or removed restart SendPlot Server.
@@ -81,7 +81,8 @@
 * Test the print settings and change settings if needed
 * Locate the INI file with the new settings at %APPDATA%\\IrfanView\\i_view32.ini.  (Open Windows Explorer and in the address bar type **%APPDATA%\\IrfanView\\**)
 * Create a new queue folder below the QUEUE-ROOT
-* Copy the new IrfanView INI file to the new queue folder.  Do not make any other changes in IrfanView until after the INI file is copied.
+* Copy the new IrfanView INI file to the new queue folder and add printer to printer.json.  Example: "CSize": "Plotter C size",
+* Do not make any other changes in IrfanView until after the INI file is copied.
 
 ----
 ## Run
