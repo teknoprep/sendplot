@@ -45,11 +45,7 @@ def scan_all_directories():
     for drawing_directory in aDirs:
         dDirectory = get_dir_dict(drawing_directory[0], drawing_directory[
                                   1], drawing_directory[2])
-        print("############ dDirectory #################")
-        print(dDirectory)
         get_dir_combined(dDirectory)
-    print("#############")
-    print(dCombined)
     fJSON = open('combined_directories.json', 'w')
     fJSON.write(json.dumps(dCombined, sort_keys=True,
                            indent=2, separators=(',', ': ')))
