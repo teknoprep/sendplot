@@ -39,11 +39,7 @@ def get_dir_combined(dDrawingList):
             dCombined[item] = [dDrawingList[item]]
 
 def scan_all_directories():
-<<<<<<< HEAD
     global dCombined, rescan_delay
-=======
-    global dCombined
->>>>>>> 2780fb2fadd29073ea0fbe7be22393a4eef742b1
     dCombined = {}
     print("Scanning directories ...")
     for drawing_directory in aDirs:
