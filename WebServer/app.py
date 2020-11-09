@@ -273,7 +273,7 @@ def print_file(printer, folder, filename):
             returnJSON['result'] = 'success'
             # returnJSON['folder'] = get_path(folder)
             copyfile(url_path[folder] + '\\' + filename,
-                     QUEUES_PDF + printer + '\\' + filename)
+                     QUEUES_PDF + '\\' + printer + '\\' + filename)
         elif filename[filename.rfind('.'):].upper() == '.PRF':
             returnJSON['action'] = 'Print PRF (PlotManager)'
             returnJSON['result'] = 'success'
