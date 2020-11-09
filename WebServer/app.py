@@ -32,8 +32,10 @@ CACHE_TIMEOUT = 30
 SEARCH_LIMIT = 1000
 
 PRF_PLOT = 'h:\\PLOT\\'
-QUEUES = 'G:\\queues\\'
-QUEUES_PDF = 'G:\\queues\\pdfOut\\'
+# QUEUES = 'G:\\queues\\'
+# QUEUES_PDF = 'G:\\queues\\pdfOut\\'
+QUEUES          = os.environ.get('PRINT_QUEUE_ROOT')
+QUEUES_PDF          = os.environ.get('PRINT_QUEUE_ROOT')
 
 DRAWING_CHARACTERS = "ABCDEX012345"
 X_PART_CHARACTERS = "12345"
