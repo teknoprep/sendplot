@@ -100,6 +100,10 @@ dReturned = {}
 sScanned = 0
 sSearch = ''
 sSearched = 0
+dotenv_path = join(dirname(__file__), '../.env')
+load_dotenv(dotenv_path)
+rescan_delay = float(os.environ.get('RESCAN_DELAY'))
+print("#" + str(rescan_delay) + "#")
 
 aDirs = read_directories()
 
@@ -118,9 +122,7 @@ dReturned['stats'] = {'search_string': sSearch + '...',
                       'drawings_found': str(len(dReturned)),
                       'search_time': sSearched}
 
-dotenv_path = join(dirname(__file__), '../.env')
-load_dotenv(dotenv_path)
-rescan_delay = float(os.environ.get('RESCAN_DELAY'))
+
 
 # save_directories()
 
