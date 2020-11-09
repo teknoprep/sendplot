@@ -1,1 +1,5 @@
-env\Scripts\activate.bat && echo. && echo  Running Sendplot Print server && echo. && call python PrintServer/server.py
+:RUNNING
+echo %DATE:~4,10% %TIME% - Server running...
+python PrintServer\server.py
+goto RUNNING
+echo done
