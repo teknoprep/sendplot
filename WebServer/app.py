@@ -456,9 +456,8 @@ def get_mb_notes(q):
 
 @app.route('/api/rescan')
 def rescan():  
-    print("before")
-    # fetch_drawings  
-    print("after")
+    fetch_drawings.scan_all_directories()
+    return ""
 
 def read_directories():
     global path_url, url_path
@@ -524,11 +523,11 @@ if __name__ == '__main__':
             #                                                                    #
             #       Check the SCAN_DIRECTORIES variable in the .env file.        #""")
         if result == 1:
-            print("          #       There are duplicate directory path.  (See below.)            #")
+            print("           #       There are duplicate directory path.  (See below.)            #")
         elif result == 2:
-            print("          #       There are duplicate URLs.  (See below.)                      #")
+            print("           #       There are duplicate URLs.  (See below.)                      #")
         
-        print("""          #                                                                    #
+        print("""           #                                                                    #
             ######################################################################
             """)
 
