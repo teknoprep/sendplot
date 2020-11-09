@@ -32,15 +32,14 @@ def get_dir_dict(fDir, fType, fLink):
 
 
 def get_dir_combined(dDrawingList):
-    for item in dDrawingList:
-        # print item
+    for item in dDrawingList:        
         if item in dCombined:
             dCombined[item].append(dDrawingList[item])
         else:
             dCombined[item] = [dDrawingList[item]]
 
-
 def scan_all_directories():
+    global dCombined
     dCombined = {}
     print("Scanning directories ...")
     for drawing_directory in aDirs:
