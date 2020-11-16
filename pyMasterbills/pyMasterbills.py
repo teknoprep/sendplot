@@ -89,7 +89,8 @@ def combineMasterbill(mb_file):
           os.rename(file, '0' + file)
 
   files              = os.listdir('.')
-  files.sort()
+  # files.sort()
+  files = sorted(files)
 
   in_file  = ''
   out_file = open(mb_file + '.txt', 'w')
@@ -242,7 +243,8 @@ def writeLogToHtml():
 
     html_out = html_out + '<div style="font-size: 14pt; font-family: arial;">Masterbill Output [F:\Operations\Masterbills]<br><ul>'
     output_masterbills = filter(os.path.isfile, glob.glob(out_queue + '*.pdf'))
-    output_masterbills.sort(key=lambda x: os.path.getmtime(x))
+    # output_masterbills.sort(key=lambda x: os.path.getmtime(x))
+    output_masterbills = sorted(output_masterbills, key=lambda x: os.path.getmtime(x))
     output_masterbills_r = output_masterbills[::-1]
 
     for mb in output_masterbills_r:                                                                                              

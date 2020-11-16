@@ -97,8 +97,10 @@ def scan_pdfs(sType):
         drawing_versions[drawing[0:5]][drawing[6:7]] = '-'
 
     for key in drawing_groups:
-        versions = drawing_versions[key].keys()
-        versions.sort()
+        # versions = drawing_versions[key].keys()
+        # versions.sort()
+        versions = sorted(drawing_versions[key]) # new 
+  
         number_of_versions = len(versions)
         latest_version = versions[-1]
         # print '\n drawing: \t' + key
