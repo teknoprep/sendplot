@@ -179,7 +179,7 @@ def check_older_out_queue():
           logger.info('failed to delete older pdf file')
           logger.info(e)
 
-    for file in os.listdir(out_queue + '\\text'):
+    for file in os.listdir(out_queue + 'text'):
       if os.path.isfile(file):
         try:
           if os.stat(out_queue + 'text/' + file).st_mtime < now - 86400:
@@ -319,7 +319,7 @@ while 1:
         new_name = ts + '_' + mb_file
 
         #     copy a text version of the mb file
-        shutil.copy(txt, out_queue + '\\text\\')
+        shutil.copy(txt, out_queue + 'text\\')
 
         os.rename(in_queue + mb_file, new_name)
         if os.path.exists(archive + new_name):
