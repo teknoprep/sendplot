@@ -23,7 +23,7 @@ def my_log(s):
 def initialize():
   # Read configuration file
   dotenv_path = join(dirname(__file__), '../.env')
-  load_dotenv(dotenv_path)
+  load_dotenv(dotenv_path) 
   QUEUES          = os.environ.get('PRINT_QUEUE_ROOT')
   # FILES           = os.environ.get('PRINT_FILES_ROOT')
   LOG_FILE        = os.environ.get('PRINT_LOG_FILE')
@@ -107,7 +107,7 @@ if __name__ == "__main__":
                   file + ' /ini="' + queue_path + \
                   '\\" /print="' + plot_queues[queue]['printer'] + '"'
             subprocess.call(cmd)
-            # logging.info(cmd)
+            # logging.info(cmd) 
             # sleep(1)
             remove(QUEUES + '\\' + queue + '\\' + file)
       else:
