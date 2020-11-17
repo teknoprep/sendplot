@@ -107,7 +107,7 @@ if __name__ == "__main__":
                   file + ' /ini="' + queue_path + \
                   '\\" /print="' + plot_queues[queue]['printer'] + '"'
             subprocess.call(cmd)
-            # logging.info(cmd)
+            # logging.info(cmd) 
             # sleep(1)
             remove(QUEUES + '\\' + queue + '\\' + file)
       else:
