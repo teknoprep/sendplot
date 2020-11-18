@@ -1,4 +1,5 @@
 from flask import Flask, abort, render_template, send_from_directory, request, make_response
+from nocache import nocache
 
 from cachelib.simple import SimpleCache
 from flask_debugtoolbar import DebugToolbarExtension
@@ -20,6 +21,18 @@ url_path = {}
 
 app = Flask(__name__)
 app.secret_key = 'l1wovKLN7xsMT5bieGN3vVnyhzQwNJmdmzzr5NMjC7AbaxJyRx34n5qXHuDBHBXUix2BLlBeoDZNh3XcNqUZLHC6oZzVioCq'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
 
 
 #                Set app.debug = True to enable Debug Toolbar
