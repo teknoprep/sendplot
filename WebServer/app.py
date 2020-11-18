@@ -1,5 +1,4 @@
 from flask import Flask, abort, render_template, send_from_directory, request, make_response
-from nocache import nocache
 
 from cachelib.simple import SimpleCache
 from flask_debugtoolbar import DebugToolbarExtension
