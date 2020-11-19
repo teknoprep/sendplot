@@ -48,6 +48,8 @@ PRF_PLOT = 'h:\\PLOT\\'
 # QUEUES_PDF = 'G:\\queues\\pdfOut\\'
 QUEUES          = os.environ.get('PRINT_QUEUE_ROOT')
 QUEUES_PDF      = os.environ.get('PRINT_QUEUE_ROOT')
+USER            = os.environ.get('USER')
+PASSWORD        = os.environ.get('PASSWORD')
 
 DRAWING_CHARACTERS = "ABCDEX012345"
 X_PART_CHARACTERS = "12345"
@@ -82,6 +84,21 @@ def default():
     return resp
     # return render_template('index.html')
 
+
+@app.route('/login', methods = ['POST', 'GET'])
+def login():
+    logger.info(request.method + ' - ' + request.path +
+                    ' - ' + request.remote_addr + ' - login')
+    resp = make_response(render_template('login.html', data = "ok"))
+    if request.method == 'POST':
+        if os.environ.get('ADMIN_NAME') == request.form['user'] and os.environ.get('ADMIN_PASSWORD') == request.form['password']:
+            resp = make_response(render_template('admin.html'))
+        else:
+            resp = make_response(render_template('login.html'))
+    else:
+        print("GET::::::::::::::::::::::::::::")
+        
+    return resp
 
 @app.route('/q/<q>')
 def index(q):
@@ -470,6 +487,20 @@ def get_mb_notes(q):
 def rescan():  
     fetch_drawings.scan_all_directories()
     return ""
+
+
+@app.route('/api/json_del')
+def json_del():  
+    json_arr = ["combined_directories", "mb_drawings", "mb_notes", "misplaced_files", "picture_directories"]
+    try:
+        for json_file in json_arr:
+            fJSON = open(json_file + '.json', 'w')
+            fJSON.write("")
+            fJSON.close()
+    except:
+        return ""
+    return "ok"
+
 
 def read_directories():
     global path_url, url_path

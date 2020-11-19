@@ -157,6 +157,7 @@ def processFile(fIn, fOut, fname):
             iCnt = 0
     try:
       c.save()
+      logger.info('saved file: ' + fOut)
     except:
       logger.info('cannot save file: ' + fOut)
 

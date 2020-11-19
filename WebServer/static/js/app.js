@@ -892,7 +892,6 @@
     });
 
     $('#btn_rescan').on('click', function() {
-      console.log("rescan")
       $.ajax({
         url: '/api/rescan'
       }).done(function(data) {
@@ -900,6 +899,10 @@
       }).fail(function(data) {
         console.log("ajax failed")
       });
+    });
+
+    $('#btn_admin').on('click', function() {
+      window.location.href = "/login";
     });
 
     /**************************************************************************************************
