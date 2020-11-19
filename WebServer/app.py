@@ -8,12 +8,12 @@ import json
 import time
 import logging
 import re
-import urllib3
+import urllib3, shutil
 from shutil import copyfile
 from livereload import Server
-from os.path import join, dirname
+from os.path import join, dirname, exists
 from dotenv import load_dotenv
-import fetch_drawings
+# import fetch_drawings
 
 path_url = {}
 url_path = {}
@@ -80,7 +80,7 @@ class Logger(logging.Logger):
 def default():
     logger.info(request.method + ' - ' + request.path +
                 ' - ' + request.remote_addr + ' - index')
-    resp = make_response(render_template('index.html'))
+    resp = make_response(render_template('index.html', user=''))
     return resp
     # return render_template('index.html')
 
@@ -92,13 +92,40 @@ def login():
     resp = make_response(render_template('login.html', data = "ok"))
     if request.method == 'POST':
         if os.environ.get('ADMIN_NAME') == request.form['user'] and os.environ.get('ADMIN_PASSWORD') == request.form['password']:
-            resp = make_response(render_template('admin.html'))
+            resp = make_response(render_template('index.html', user='admin'))
         else:
             resp = make_response(render_template('login.html'))
     else:
         print("GET::::::::::::::::::::::::::::")
         
     return resp
+
+
+@app.route('/file_del/<string:data_id>', methods = ['POST', 'GET'])
+def file_del(data_id):
+    dReturned = {}
+    dCombined = read_json()
+    trash_bin = os.environ.get('TRASH_BIN')
+    for key, value in dCombined.items():
+        key = key.upper()
+        if key == data_id:
+            print("OK########################################")
+            for v in value:
+                if exists(v):
+                    try:
+                        shutil.move(v, trash_bin)
+                    except:
+                        return ""
+                else:
+                    return ""
+                print(v)
+        else:
+            dReturned[key] = value
+    fJSON = open('combined_directories.json', 'w')
+    fJSON.write(json.dumps(dReturned))
+    fJSON.close()
+
+    return "ok"
 
 @app.route('/q/<q>')
 def index(q):

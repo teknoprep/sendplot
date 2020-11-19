@@ -239,6 +239,8 @@
     action_btns.More = 'disabled';
     action_btns.PDF = 'disabled';
     action_btns.Print = 'disabled';
+    console.log("user = " + user)
+    if (user == "admin") action_btns.Delete = 'enabled';
     action_links = {};
     $.each(val, function(item) {
       var data_id, drawing_link, info_button, mb_drawings_button, more_info_link, pdf_modified, s, s_type;
@@ -246,6 +248,8 @@
       drawing_link = val[item];
       more_info_link = '';
       data_id = drawing_name;
+      action_links.data_id = data_id
+      action_links.real = drawing_link
       if (drawing_link.indexOf('/imported/') > -1) {
         info_button = '<a id="more_info" data-id="' + data_id + '">Linked data</a>';
         more_info_link = '&nbsp;&nbsp;' + info_button;
@@ -311,6 +315,25 @@
   handle_action_clicks = function($el) {
     $('#menu_more').hide();
     switch ($el.id) {
+      case 'Delete_btn':
+        console.log('delete button clicked')
+        console.log(action_links.data_id)
+        console.log(action_links.real)
+        $.ajax({
+          url: '/file_del/' + action_links.data_id
+        }).done(function(data) {
+          if (data == "ok") {
+            $('#flash').html(action_links.data_id + " is removed.");            
+          } else {
+            $('#flash').html("file deletion is failed.");
+          }
+          flash_message();
+          
+        }).fail(function(data) {
+          $('#flash').html("file deletion is failed.");
+          flash_message();
+        });
+        break;
       case 'Print_btn':
         if (default_printer === 'no cookie') {
           $('#flash').html('No Printer Selected!<br><br>To print, click <strong>Printers</strong> above and select a printer.');
@@ -801,6 +824,18 @@
     var locationPath, q;
     locationPath = window.location.pathname.split('/');
     q = locationPath[2];
+    if (typeof(user) != "undefined" && user !== null) {
+      console.log("yes");
+      if (user == "admin") {
+          $("#btn_admin").css("display", "none")
+      } else {
+          $("#btn_admin").css("display", "inline")
+      }
+      console.log("user = " + user);
+    } else {
+      $("#btn_admin").css("display", "inline")
+        console.log("no");
+    }
     if (q !== void 0) {
       $('#search').attr('value', q);
       update_list();

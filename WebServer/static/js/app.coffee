@@ -224,6 +224,7 @@ handle_results_clicks = ($el) ->
   action_btns.More = 'disabled'
   action_btns.PDF = 'disabled'
   action_btns.Print = 'disabled'
+  action_btns.Delete = 'disabled'
   action_links = {}
   # console.log( 'val', val, drawing_name, drawings, drawings[drawing_name] );
   $.each val, (item) ->
