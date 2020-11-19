@@ -13,7 +13,7 @@ from shutil import copyfile
 from livereload import Server
 from os.path import join, dirname, exists
 from dotenv import load_dotenv
-# import fetch_drawings
+import fetch_drawings
 
 path_url = {}
 url_path = {}
