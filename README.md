@@ -89,10 +89,10 @@
 
 ## Environment Setup (.env)
 * SCAN_DIRECTORIES: the array of directories you want to scan
-*** parameters: the path of directory, the type of file you store in the directory, the URL used by the webserver
+- parameters: the path of directory, the type of file you store in the directory, the URL used by the webserver
 * PRINTERS: the dictionary of printers
-*** key: printer's directory name
-*** value: printer name to be displayed
+- key: printer's directory name
+- value: printer name to be displayed
 * RESCAN_DELAY: directory scan delay time
 * IN_QUEUE: Masterbills input directory
 * OUT_QUEUE: Masterbills temporary output directory (for working)
