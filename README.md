@@ -90,19 +90,19 @@
 
 ### Web Server
 
-* run run_web_server.bat
+* run_Sendplot.cmd
 
 ----
 
 ### pyMasterbills
 
-* run run_pymasterbills.bat
+* run_pyMasterBills.cmd
 
 ----
 
 ### Print Server
 
-* run run_print_server.bat
+* run_print_server.cmd
 
 
 
