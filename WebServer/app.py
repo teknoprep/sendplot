@@ -179,11 +179,11 @@ def search_for_drawing(q, dCombined):
     return dReturned
 
 
-def read_mb_notes_json():
-    dMbNotes = {}
-    with open('mb_notes.json') as json_file:
-        dMbNotes = json.load(json_file)
-    return dMbNotes
+# def read_mb_notes_json():
+#     dMbNotes = {}
+#     with open('mb_notes.json') as json_file:
+#         dMbNotes = json.load(json_file)
+#     return dMbNotes
 
 
 def search_for_mb_notes(q, dMbNotes):
@@ -423,42 +423,42 @@ def get_file_meta(filepath, filename):
     return json.dumps(file_meta)
 
 
-@app.route('/api/get_mb_drawings/<q>')
-def get_mb_drawings(q):
-    print ('\t\t\t ' + q)
-    dMbDrawings = {}
-    with open('mb_drawings.json') as json_file:
-        dMbDrawings = json.load(json_file)
+# @app.route('/api/get_mb_drawings/<q>')
+# def get_mb_drawings(q):
+#     print ('\t\t\t ' + q)
+#     dMbDrawings = {}
+#     with open('mb_drawings.json') as json_file:
+#         dMbDrawings = json.load(json_file)
 
-    dReturned = {}
-    for key, value in dMbDrawings.items():
-        if key == q:
-            # logger.info( 'key, value')
-            # logger.info(  key )
-            # for item in value:
-            #   logger.info( item )
-            # logger.info( value )
-            dReturned[key] = value
-    return json.dumps(dReturned)
+#     dReturned = {}
+#     for key, value in dMbDrawings.items():
+#         if key == q:
+#             # logger.info( 'key, value')
+#             # logger.info(  key )
+#             # for item in value:
+#             #   logger.info( item )
+#             # logger.info( value )
+#             dReturned[key] = value
+#     return json.dumps(dReturned)
 
 
-@app.route('/api/get_media/<q>')
-def get_media(q):
-    print ('\t\t\t ' + q)
-    dMedia = {}
-    with open('picture_directories.json') as json_file:
-        dMedia = json.load(json_file)
+# @app.route('/api/get_media/<q>')
+# def get_media(q):
+#     print ('\t\t\t ' + q)
+#     dMedia = {}
+#     with open('picture_directories.json') as json_file:
+#         dMedia = json.load(json_file)
 
-    dReturned = {}
-    for key, value in dMedia.items():
-        if key == q:
-            # logger.info( 'key, value')
-            # logger.info(  key )
-            # for item in value:
-            #   logger.info( item )
-            # logger.info( value )
-            dReturned[key] = value
-    return json.dumps(dReturned)
+#     dReturned = {}
+#     for key, value in dMedia.items():
+#         if key == q:
+#             # logger.info( 'key, value')
+#             # logger.info(  key )
+#             # for item in value:
+#             #   logger.info( item )
+#             # logger.info( value )
+#             dReturned[key] = value
+#     return json.dumps(dReturned)
 
 
 @app.route('/api/get_media_folder/<q>')
@@ -477,13 +477,13 @@ def get_media_folder(q):
     return json.dumps(dMedia)
 
 
-@app.route('/api/get_misplaced_files')
-def get_misplaced_files():
+# @app.route('/api/get_misplaced_files')
+# def get_misplaced_files():
 
-    with open('misplaced_files.json') as json_file:
-        dMisplacedFiles = json.load(json_file)
+#     with open('misplaced_files.json') as json_file:
+#         dMisplacedFiles = json.load(json_file)
 
-    return json.dumps(dMisplacedFiles)
+#     return json.dumps(dMisplacedFiles)
 
 
 @app.route('/api/get_image/<q>/<r>')
@@ -503,12 +503,12 @@ def get_image(q, r):
         return(json.dumps(sReturn))
 
 
-@app.route('/api/get_mb_notes/<q>')
-def get_mb_notes(q):
-    # logger.info(request.method + ' - ' + request.path + ' - ' + request.remote_addr + ' - search query: "' + q + '"')
-    dMbNotes = read_mb_notes_json()
-    dReturned = search_for_mb_notes(q, dMbNotes)
-    return json.dumps(dReturned)
+# @app.route('/api/get_mb_notes/<q>')
+# def get_mb_notes(q):
+#     # logger.info(request.method + ' - ' + request.path + ' - ' + request.remote_addr + ' - search query: "' + q + '"')
+#     dMbNotes = read_mb_notes_json()
+#     dReturned = search_for_mb_notes(q, dMbNotes)
+#     return json.dumps(dReturned)
 
 @app.route('/api/rescan')
 def rescan():  
@@ -593,11 +593,11 @@ if __name__ == '__main__':
             #                                                                    #
             #       Check the SCAN_DIRECTORIES variable in the .env file.        #""")
         if result == 1:
-            print("           #       There are duplicate directory path.  (See below.)            #")
+            print("            #       There are duplicate directory path.  (See below.)            #")
         elif result == 2:
-            print("           #       There are duplicate URLs.  (See below.)                      #")
+            print("            #       There are duplicate URLs.  (See below.)                      #")
         
-        print("""           #                                                                    #
+        print("""            #                                                                    #
             ######################################################################
             """)
 
