@@ -86,23 +86,48 @@
 * Do not make any other changes in IrfanView until after the INI file is copied.
 
 ----
+
+## Environment Setup (.env)
+* SCAN_DIRECTORIES: the array of directories you want to scan
+  * parameters: 
+    * the path of directory, 
+    * the type of file you store in the directory, 
+    * the URL used by the webserver
+* PRINTERS: the dictionary of printers
+   * key: printer's directory name
+  * value: printer name to be displayed
+* RESCAN_DELAY: directory scan delay time
+* IN_QUEUE: Masterbills input directory
+* OUT_QUEUE: Masterbills temporary output directory (for working)
+* ARCHIVE: Masterbills output directory (for storage)
+* MASTERBILLS_SCAN_DELAY: Masterbills scan delay time
+* MASTERBILLS_LOG_DIR: Masterbills Log directory
+* PRINT_QUEUE_ROOT: the root folder of the PDF queue for printing
+* PRINT_LOG_FILE: Path to log file of Print Server
+* I_VIEW32: Path to i_view32.exe
+* PRINT_SCAN_DELAY: print scan delay time
+* ADMIN_NAME: administrator's name
+* ADMIN_PASSWORD: administrator's password
+* TRASH_BIN: Directory where "deleted" files are stored
+
+----
 ## Run
 
 ### Web Server
 
-* run run_web_server.bat
+* run_Sendplot.cmd
 
 ----
 
 ### pyMasterbills
 
-* run run_pymasterbills.bat
+* run_pyMasterBills.cmd
 
 ----
 
 ### Print Server
 
-* run run_print_server.bat
+* run_print_server.cmd
 
 
 
