@@ -108,17 +108,23 @@ def file_del(data_id):
     trash_bin = os.environ.get('TRASH_BIN')
     for key, value in dCombined.items():
         key = key.upper()
+        new_value = []
         if key == data_id:
-            print("OK########################################")
             for v in value:
+                ext = v[-3:]
+                if ext.upper() != "PDF": 
+                    new_value.append(v)
+                    continue
                 if exists(v):
                     try:
                         shutil.move(v, trash_bin)
+                        print(v + " is removed.")
                     except:
                         return ""
                 else:
                     return ""
-                print(v)
+            if len(new_value) > 0: dReturned[key] = new_value
+                
         else:
             dReturned[key] = value
     fJSON = open('combined_directories.json', 'w')
