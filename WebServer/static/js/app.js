@@ -740,7 +740,7 @@
     $('#menu_more').hide();
     switch (e.keyCode) {
       case 191:
-      case 69:
+      // case 69:
         if ($('#search').is(':focus')) {
           $('#search').val($('#search').val() + 'e');
           return false;
@@ -828,8 +828,12 @@
       console.log("yes");
       if (user == "admin") {
           $("#btn_admin").css("display", "none")
+          $("#btn_rescan").css("display", "inline")
+          $("#btn_leave_admin").css("display", "inline")
       } else {
           $("#btn_admin").css("display", "inline")
+          $("#btn_rescan").css("display", "none")
+          $("#btn_leave_admin").css("display", "none")
       }
       console.log("user = " + user);
     } else {
@@ -938,6 +942,10 @@
 
     $('#btn_admin').on('click', function() {
       window.location.href = "/login";
+    });
+
+    $('#btn_leave_admin').on('click', function() {
+      window.location.href = "/";
     });
 
     /**************************************************************************************************
