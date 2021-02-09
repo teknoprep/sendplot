@@ -986,6 +986,15 @@
       $.each(sorted_printers, function(index) {});
       get_printers_menu();
     });
+
+    var myVar = setInterval(get_last_time, 10000);
+
+    function get_last_time() {
+      $.get('http:\\\\localhost:5000\\static\\last_time.txt', function(data) {
+        console.log("last_time = " + data);
+        $("#last_time").html(data);
+     }, 'text');
+    }
   });
 
 }).call(this);
