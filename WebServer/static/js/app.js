@@ -98,13 +98,8 @@
         sorted.sort();
         yogi = '<br><br> If you don\'t know where you\'re going...<br> ...you might not get there...<br> - <a href="http://en.wikipedia.org/wiki/Yogi_Berra" target="_blank"> Yogi Berra </a>';
         $.each(sorted, function(index) {
-          timestamp = '';
-          $.each(drawing_json[sorted[index]], function(index_2) {
-            ext = drawing_json[sorted[index]][index_2][0].substr(-3).toLowerCase();
-            if (ext == 'pdf') timestamp = drawing_json[sorted[index]][index_2][1];
-          });          
-          if (drawing_json[sorted[index]][0][0] !== 'stats') {
-            $('#list_queue').append('<li class="list-group-item pdf" id="' + sorted[index] + '">' + sorted[index] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + timestamp + '</li>');
+          if (drawing_json[sorted[index]] !== 'stats') {
+            $('#list_queue').append('<li class="list-group-item pdf" id="' + sorted[index] + '">' + sorted[index] + '</li>');
           }
         });
         $('#list').scrollTop(0);
@@ -165,7 +160,7 @@
       var print_drawings;
       print_drawings = [];
       $.each(drawings[drawing], function(item) {
-        if (drawings[drawing][item][0].indexOf('pdf_out') > -1 || drawings[drawing][item][0].indexOf('mb-archive') > -1) {
+        if (drawings[drawing][item].indexOf('pdf_out') > -1 || drawings[drawing][item].indexOf('mb-archive') > -1) {
           return print_drawings.push(drawings[drawing][item]);
         }
       });
@@ -991,15 +986,6 @@
       $.each(sorted_printers, function(index) {});
       get_printers_menu();
     });
-
-    var myVar = setInterval(get_last_time, 10000);
-
-    function get_last_time() {
-      $.get('http:\\\\localhost:5000\\static\\last_time.txt', function(data) {
-        console.log("last_time = " + data);
-        $("#last_time").html(data);
-     }, 'text');
-    }
   });
 
 }).call(this);

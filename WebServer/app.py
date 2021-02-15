@@ -158,15 +158,12 @@ def read_json():
 def get_web_links(links):
     global path_url
     web_links = []
-    for link in links:
-        last_slash = link[0].rfind('\\')
-        tmp_arr = []
+    for url in links:
+        last_slash = url.rfind('\\')
         # next_slash = url[0:last_slash].rfind('\\') + 1
         # web_links.append(
         #     '/download' + get_url(url[next_slash:last_slash]) + url[url.rfind('\\') + 1:])
-        tmp_arr.append('/download/' + path_url[link[0][:last_slash]] + "/" + link[0][link[0].rfind('\\') + 1:])
-        tmp_arr.append(link[1])
-        web_links.append(tmp_arr)
+        web_links.append('/download/' + path_url[url[:last_slash]] + "/" + url[url.rfind('\\') + 1:])
     return web_links
 
 

@@ -127,16 +127,6 @@ li:hover {
   vertical-align: top;
 }
 
-.last_time {
-  font-size: 19pt;
-  padding: 2px 2px 2px 20px;
-  margin-bottom: 10px;
-}
-
-#last_time {
-  font-style: italic;
-}
-
 #drawing_message {
   display: none;
 }
