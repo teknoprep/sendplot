@@ -98,8 +98,13 @@
         sorted.sort();
         yogi = '<br><br> If you don\'t know where you\'re going...<br> ...you might not get there...<br> - <a href="http://en.wikipedia.org/wiki/Yogi_Berra" target="_blank"> Yogi Berra </a>';
         $.each(sorted, function(index) {
-          if (drawing_json[sorted[index]] !== 'stats') {
-            $('#list_queue').append('<li class="list-group-item pdf" id="' + sorted[index] + '">' + sorted[index] + '</li>');
+          timestamp = '';
+          $.each(drawing_json[sorted[index]], function(index_2) {
+            ext = drawing_json[sorted[index]][index_2][0].substr(-3).toLowerCase();
+            if (ext == 'pdf') timestamp = drawing_json[sorted[index]][index_2][1];
+          });          
+          if (drawing_json[sorted[index]][0][0] !== 'stats') {
+            $('#list_queue').append('<li class="list-group-item pdf" id="' + sorted[index] + '" data-special="' + timestamp + '">' + sorted[index] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + timestamp + '</li>');
           }
         });
         $('#list').scrollTop(0);
@@ -160,7 +165,7 @@
       var print_drawings;
       print_drawings = [];
       $.each(drawings[drawing], function(item) {
-        if (drawings[drawing][item].indexOf('pdf_out') > -1 || drawings[drawing][item].indexOf('mb-archive') > -1) {
+        if (drawings[drawing][item][0].indexOf('pdf_out') > -1 || drawings[drawing][item][0].indexOf('mb-archive') > -1) {
           return print_drawings.push(drawings[drawing][item]);
         }
       });
@@ -199,6 +204,7 @@
   };
 
   handle_results_clicks = function($el) {
+    console.log("handle_results_clicks");
     var action_btns, drawing_name, items, key, sString, s_buttons, s_disabled, val;
     $('.active').removeClass('active');
     $('#info').html('');
@@ -227,13 +233,15 @@
         drawing_name = drawing_name.toUpperCase();
         if (search_strings.length > 1) {
           if (drawing_name.indexOf(sString) !== -1) {
-            val = drawings[sString][drawing_name];
+            console.log("drawing_name = " + drawings[sString][drawing_name]);
+            val = drawings[sString][drawing_name][0];
           } else {
 
           }
         } else {
-          val = drawings[sString][drawing_name];
+          val = drawings[sString][drawing_name][0];
         }
+        console.log("val = " + val);
       }
     });
     action_btns.More = 'disabled';
@@ -263,6 +271,8 @@
         action_links['MB Drawing List'] = data_id;
         $('#menu_more').append('<li class="list-group-item">' + more_info_link + '</li>');
       }
+      console.log("a - 1");
+      console.log(drawing_link);
       if (drawing_link.toUpperCase().lastIndexOf('.PRF') > 0) {
         action_links.PRF = drawing_link;
         action_btns.Print = 'enabled';
@@ -294,8 +304,17 @@
       }
       s_buttons += '<button type="button" id="' + key + '_btn" ' + s_disabled + ' data-id="' + drawing_name + '"> ' + key + ' </button>';
     }
+    console.log("innerHTML = " + $('#' + drawing_name)[0].innerHTML);
+    console.log("data = " + $('#' + drawing_name).data("special"));
     if ($('#' + drawing_name)[0]) {
-      $('#' + drawing_name)[0].innerHTML = drawing_name + s_buttons;
+      
+      if ($('#' + drawing_name)[0].innerHTML.substr(-9) != "</button>") {
+        $('#' + drawing_name)[0].innerHTML = drawing_name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + $('#' + drawing_name).data("special") + s_buttons;
+        console.log("innerHTML = " + $('#' + drawing_name)[0].innerHTML);
+      } else {
+        console.log("there is some buttons.");
+      }
+      
     }
     if (action_btns.Print === 'disabled') {
       $('#Print_btn').addClass('print_btn_disabled');
@@ -986,6 +1005,15 @@
       $.each(sorted_printers, function(index) {});
       get_printers_menu();
     });
+
+    var myVar = setInterval(get_last_time, 10000);
+
+    function get_last_time() {
+      $.get('http:\\\\localhost:5000\\static\\last_time.txt', function(data) {
+        console.log("last_time = " + data);
+        $("#last_time").html(data);
+     }, 'text');
+    }
   });
 
 }).call(this);
