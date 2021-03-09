@@ -15,10 +15,31 @@ from reportlab.lib.pagesizes import letter, A4, LEGAL, elevenSeventeen,landscape
 
 from os.path import join, dirname
 from dotenv import load_dotenv
+import dotenv
+from pathlib import Path
 
 
+
+start_time = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
+
+# last_time_path = sys.path[0]
+# print(last_time_path)
+# last_time_path = last_time_path[:last_time_path.rfind("\\")] + "\\WebServer\\last_time.txt"
+# print(last_time_path)
+    # last_date = os.environ.get('LAST_DATE')
+# print(os.path.isfile(last_time_path))
+file1 = open(join(dirname(__file__), '..\\WebServer\\static\\last_time.txt'),"r")  
+  
+last_date = file1.read() 
+print("last_date = " + last_date)
+file1.close()
+
+# dotenv.set_key(dotenv_path, "LAST_DATE", start_time)
+file1 = open(join(dirname(__file__), '..\\WebServer\\static\\last_time.txt'),"w")  
+file1.write(start_time)
+file1.close()
 
 in_queue    = os.environ.get('IN_QUEUE') + "\\"
 out_queue   = os.environ.get('OUT_QUEUE') + "\\"
@@ -304,6 +325,12 @@ while 1:
       logger.info(mb_file + '\tisfile: ' + str(is_file) + '\t isdir: ' + str(is_dir) + '\t exists: ' + str(exists))
 #       if os.path.isdir(mb_file):
       if checkMasterbillComplete(mb_file):
+        # compare timestamp
+        mtime = os.path.getctime(in_queue + mb_file)
+        if mtime < os.path.getmtime(in_queue + mb_file):
+          mtime = os.path.getmtime(in_queue + mb_file)
+        created_date = datetime.fromtimestamp(mtime)
+        if created_date <= datetime.strptime(last_date, '%Y-%m-%d %H:%M:%S'): continue
         fname = combineMasterbill(mb_file).name
 
         txt   = in_queue + mb_file + '\\' + fname
@@ -311,10 +338,12 @@ while 1:
         ts    = time_stamp()
         logger.info('processing ' + mb_file)
 
-        if not check_existing_pdf(pdf):
-          #    check for existing pdf
-          #    if older pdf cannot be removed skip until next cycle
-          break
+        # don't remove existing pdf files (updated part)
+
+        # if not check_existing_pdf(pdf):
+        #   #    check for existing pdf
+        #   #    if older pdf cannot be removed skip until next cycle
+        #   break
 
         processFile(txt, pdf, fname)
 
@@ -343,6 +372,8 @@ while 1:
         logger.info('partial ' + mb_file)
 #     else:
 #       logger.warning('WARNING: file in root of IN_QUEUE \t' + mb_file)
+
+  
 
   check_older_out_queue()
 
